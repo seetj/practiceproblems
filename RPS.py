@@ -1,33 +1,57 @@
+import random
 
-dictionary = {
-                1: 'Rock',
-                2: 'Scissors',
-                3: 'Paper'
-} 
-y = random.choice(list(dictionary))
-print(dictionary)
+score = int(0)
+computer_score = int(0)
 
-x = input('Select your value:')
-if x not in dictionary:
-    x = input('Select a valid value:')
+engine = int(input('1 to start RPS and 0 to stop: '))
+while 1 == 1:
+    if engine != 1 and engine != 0:
+        engine = input('Invalid input, try again: ')
+    else:
 
-if y == x: 
-    print('Tie')
+        while engine == 1:
+            weapons = ['Rock','Paper','Scissors']
 
-if y == 1 and x == 2:
-    print('You Lose') 
+            x = input('Select a weapon: ')
 
-if y == 1 and x == 3:
-    print('You Win!')
+            while 1 == 1:
+                if x not in weapons:
+                    x = str(input('Select a valid weapon: '))
+                else:
+                    break
+            y = random.choice(weapons)
+            print('Computer chooses ' + y)
 
-if y == 2 and x == 1:
-    print('You Win!')
+            if y == x: 
+                print('Tie')
 
-if y == 2 and x == 3:
-    print('You Lose')
+            if y == weapons[0] and x == weapons[1]:
+                print('You Win')
+                score += 1 
 
-if y == 3 and x == 1:
-    print('You Lose')
+            if y == weapons[0] and x == weapons[2]:
+                print('You Lose!')
+                computer_score += 1 
 
-if y == 3 and x == 2:
-    print('You Win!')
+            if y == weapons[1] and x == weapons[0]:
+                print('You Lose!')
+                computer_score += 1 
+
+            if y == weapons[1] and x == weapons[2]:
+                print('You Win')
+                score += 1 
+
+            if y == weapons[2] and x == weapons[0]:
+                print('You Win')
+                score += 1 
+
+            if y == weapons[2] and x == weapons[1]:
+                print('You Lose!')
+                computer_score += 1 
+
+            print('Score:\nYou: ' + str(score), 'Computer: ' + str(computer_score))
+            engine = int(input('To continue input 1, to stop input 0: ' ))
+            print(" ")
+        else:
+            print('Thanks for playing!')
+            break
